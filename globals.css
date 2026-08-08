@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+:root {
+  --background: #09090B;
+  --foreground: #FAFAFA;
+  
+  --card: #18181B;
+  --card-foreground: #FAFAFA;
+  
+  --border: #2A2A2F;
+  
+  --primary: #3B82F6;
+  --primary-foreground: #FFFFFF;
+  
+  --secondary: #8B5CF6;
+  
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --error: #EF4444;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Geist', 'Inter', system-ui, -apple-system, sans-serif;
+  overflow: hidden;
+  height: 100vh;
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+
+/* Custom scrollbars - Vercel / Linear style */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #09090B;
+}
+::-webkit-scrollbar-thumb {
+  background: #2A2A2F;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3B82F6;
+}
+
+/* Orb background animation */
+@keyframes orb-float {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-orb-slow {
+  animation: orb-float 25s ease-in-out infinite;
+}
+
+.animate-orb-slower {
+  animation: orb-float 35s ease-in-out infinite reverse;
+}
+
+/* Orbit lines animation */
+@keyframes orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-orbit-slow {
+  animation: orbit 120s linear infinite;
+}
+
+.animate-orbit-slower {
+  animation: orbit 180s linear infinite reverse;
+}
+
+/* Glow effects */
+.glow-primary {
+  box-shadow: 0 0 40px -5px rgba(59, 130, 246, 0.15);
+}
+
+.glow-secondary {
+  box-shadow: 0 0 40px -5px rgba(139, 92, 246, 0.15);
+}
+
+.glow-btn:hover {
+  box-shadow: 0 0 20px 2px rgba(59, 130, 246, 0.25);
+}
+
+/* Dash animation for uploader border */
+@keyframes border-dance {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -20;
+  }
+}
+
+.animate-border-dance {
+  stroke-dasharray: 6, 4;
+  animation: border-dance 1.2s linear infinite;
+}

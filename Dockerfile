@@ -1,36 +1,27 @@
-# Multi-stage Dockerfile for Google Cloud Run deployment
-FROM python:3.12-slim AS builder
-
+# Multi-stage Dockerfile for Next.js on Google Cloud Run
+FROM node:18-alpine AS builder
 WORKDIR /app
-
-# Install system dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
-
-# Install python dependencies into a wheelhouse
-COPY requirements.txt .
-RUN pip install --no-cache-dir --user -r requirements.txt
-
-# Final runner stage
-FROM python:3.12-slim AS runner
-
-WORKDIR /app
-
-# Copy installed dependencies from builder
-COPY --from=builder /root/.local /root/.local
-ENV PATH=/root/.local/bin:$PATH
-
-# Copy backend source code
+COPY package*.json ./
+RUN npm ci
 COPY . .
 
-# Expose default API port
-EXPOSE 8000
+# Build-time environment variable injection
+ARG NEXT_PUBLIC_API_URL
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
 
-# Set environment defaults for Cloud Run
-ENV PORT=8000
-ENV API_PORT=8000
-ENV LOG_LEVEL=INFO
+RUN npm run build
 
-# Launch API server mapping to Cloud Run's dynamic PORT environment variable
-CMD uvicorn app.main:app --host 0.0.0.0 --port $PORT
+FROM node:18-alpine AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+ENV PORT=3000
+
+# Copy Next.js deployment output structures
+COPY --from=builder /app/next.config.ts ./
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
+
+EXPOSE 3000
+CMD ["npm", "start"]
