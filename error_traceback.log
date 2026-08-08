@@ -1,0 +1,202 @@
+
+--- Exception for session 5656ceb5-1a07-4b6f-a520-26df6e6952a2 ---
+Traceback (most recent call last):
+  File "C:\Users\bhano\OneDrive\Desktop\MemoryOS\backend\app\api\endpoints.py", line 353, in post_interview_message
+    turn = await interview_agent.conduct_turn(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "C:\Users\bhano\OneDrive\Desktop\MemoryOS\backend\app\agents\interview_agent.py", line 74, in conduct_turn
+    turn_result: InterviewTurnSchema = await llm_service.execute_structured_prompt(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\Users\bhano\OneDrive\Desktop\MemoryOS\backend\app\services\llm\llm_service.py", line 120, in execute_structured_prompt
+    raise last_error or JSONParsingError("Structured LLM output validation failed.")
+  File "C:\Users\bhano\OneDrive\Desktop\MemoryOS\backend\app\services\llm\llm_service.py", line 90, in execute_structured_prompt
+    raw_response = await self.execute_prompt(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\Users\bhano\OneDrive\Desktop\MemoryOS\backend\app\services\llm\llm_service.py", line 65, in execute_prompt
+    raise last_error or Exception("LLM prompt execution failed.")
+  File "C:\Users\bhano\OneDrive\Desktop\MemoryOS\backend\app\services\llm\llm_service.py", line 45, in execute_prompt
+    result = await self.provider.execute_messages_async(messages, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhano\OneDrive\Desktop\MemoryOS\backend\app\services\llm\groq_provider.py", line 65, in execute_messages_async
+    raise e
+  File "C:\Users\bhano\OneDrive\Desktop\MemoryOS\backend\app\services\llm\groq_provider.py", line 54, in execute_messages_async
+    response = await self._client.ainvoke(messages, **execution_args)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhano\AppData\Roaming\Python\Python314\site-packages\langchain_core\language_models\chat_models.py", line 499, in ainvoke
+    llm_result = await self.agenerate_prompt(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<8 lines>...
+    )
+    ^
+  File "C:\Users\bhano\AppData\Roaming\Python\Python314\site-packages\langchain_core\language_models\chat_models.py", line 1860, in agenerate_prompt
+    return await self.agenerate(
+           ^^^^^^^^^^^^^^^^^^^^^
+        prompt_messages, stop=stop, callbacks=callbacks, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\bhano\AppData\Roaming\Python\Python314\site-packages\langchain_core\language_models\chat_models.py", line 1818, in agenerate
+    raise exceptions[0]
+  File "C:\Users\bhano\AppData\Roaming\Python\Python314\site-packages\langchain_core\language_models\chat_models.py", line 2151, in _agenerate_with_cache
+    result = await self._agenerate(
+             ^^^^^^^^^^^^^^^^^^^^^^
+        messages, stop=stop, run_manager=run_manager, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\bhano\AppData\Roaming\Python\Python314\site-packages\langchain_groq\chat_models.py", line 648, in _agenerate
+    response = await self.async_client.create(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhano\AppData\Roaming\Python\Python314\site-packages\groq\resources\chat\completions.py", line 941, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+    )
+    ^
+  File "C:\Users\bhano\AppData\Roaming\Python\Python314\site-packages\groq\_base_client.py", line 1762, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhano\AppData\Roaming\Python\Python314\site-packages\groq\_base_client.py", line 1576, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k0w3jhxfed2bsb229nd7wx9j` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99585, Requested 1121. Please try again in 10m9.984s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+
+--- Exception for session f7e58b19-44af-4068-bc06-90cbaf85fbd6 ---
+Traceback (most recent call last):
+  File "C:\Users\bhano\OneDrive\Desktop\MemoryOS\backend\app\api\endpoints.py", line 353, in post_interview_message
+    turn = await interview_agent.conduct_turn(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "C:\Users\bhano\OneDrive\Desktop\MemoryOS\backend\app\agents\interview_agent.py", line 74, in conduct_turn
+    turn_result: InterviewTurnSchema = await llm_service.execute_structured_prompt(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\Users\bhano\OneDrive\Desktop\MemoryOS\backend\app\services\llm\llm_service.py", line 120, in execute_structured_prompt
+    raise last_error or JSONParsingError("Structured LLM output validation failed.")
+  File "C:\Users\bhano\OneDrive\Desktop\MemoryOS\backend\app\services\llm\llm_service.py", line 90, in execute_structured_prompt
+    raw_response = await self.execute_prompt(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\Users\bhano\OneDrive\Desktop\MemoryOS\backend\app\services\llm\llm_service.py", line 65, in execute_prompt
+    raise last_error or Exception("LLM prompt execution failed.")
+  File "C:\Users\bhano\OneDrive\Desktop\MemoryOS\backend\app\services\llm\llm_service.py", line 45, in execute_prompt
+    result = await self.provider.execute_messages_async(messages, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhano\OneDrive\Desktop\MemoryOS\backend\app\services\llm\groq_provider.py", line 65, in execute_messages_async
+    raise e
+  File "C:\Users\bhano\OneDrive\Desktop\MemoryOS\backend\app\services\llm\groq_provider.py", line 54, in execute_messages_async
+    response = await self._client.ainvoke(messages, **execution_args)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhano\AppData\Roaming\Python\Python314\site-packages\langchain_core\language_models\chat_models.py", line 499, in ainvoke
+    llm_result = await self.agenerate_prompt(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<8 lines>...
+    )
+    ^
+  File "C:\Users\bhano\AppData\Roaming\Python\Python314\site-packages\langchain_core\language_models\chat_models.py", line 1860, in agenerate_prompt
+    return await self.agenerate(
+           ^^^^^^^^^^^^^^^^^^^^^
+        prompt_messages, stop=stop, callbacks=callbacks, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\bhano\AppData\Roaming\Python\Python314\site-packages\langchain_core\language_models\chat_models.py", line 1818, in agenerate
+    raise exceptions[0]
+  File "C:\Users\bhano\AppData\Roaming\Python\Python314\site-packages\langchain_core\language_models\chat_models.py", line 2151, in _agenerate_with_cache
+    result = await self._agenerate(
+             ^^^^^^^^^^^^^^^^^^^^^^
+        messages, stop=stop, run_manager=run_manager, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\bhano\AppData\Roaming\Python\Python314\site-packages\langchain_groq\chat_models.py", line 648, in _agenerate
+    response = await self.async_client.create(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhano\AppData\Roaming\Python\Python314\site-packages\groq\resources\chat\completions.py", line 941, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+    )
+    ^
+  File "C:\Users\bhano\AppData\Roaming\Python\Python314\site-packages\groq\_base_client.py", line 1762, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhano\AppData\Roaming\Python\Python314\site-packages\groq\_base_client.py", line 1576, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k0w3jhxfed2bsb229nd7wx9j` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99526, Requested 1121. Please try again in 9m19.008s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+
+--- Exception for session 521139c9-8b83-4ed8-a133-bf2c9116fb65 ---
+Traceback (most recent call last):
+  File "C:\Users\bhano\OneDrive\Desktop\MemoryOS\backend\app\api\endpoints.py", line 353, in post_interview_message
+    turn = await interview_agent.conduct_turn(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "C:\Users\bhano\OneDrive\Desktop\MemoryOS\backend\app\agents\interview_agent.py", line 74, in conduct_turn
+    turn_result: InterviewTurnSchema = await llm_service.execute_structured_prompt(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\Users\bhano\OneDrive\Desktop\MemoryOS\backend\app\services\llm\llm_service.py", line 126, in execute_structured_prompt
+    raise last_error or JSONParsingError("Structured LLM output validation failed.")
+  File "C:\Users\bhano\OneDrive\Desktop\MemoryOS\backend\app\services\llm\llm_service.py", line 96, in execute_structured_prompt
+    raw_response = await self.execute_prompt(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\Users\bhano\OneDrive\Desktop\MemoryOS\backend\app\services\llm\llm_service.py", line 71, in execute_prompt
+    raise last_error or Exception("LLM prompt execution failed.")
+  File "C:\Users\bhano\OneDrive\Desktop\MemoryOS\backend\app\services\llm\llm_service.py", line 51, in execute_prompt
+    result = await self.provider.execute_messages_async(messages, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhano\OneDrive\Desktop\MemoryOS\backend\app\services\llm\gemini_provider.py", line 40, in execute_messages_async
+    raise ValueError("Gemini client is not initialized. Please verify GEMINI_API_KEY environment variable.")
+ValueError: Gemini client is not initialized. Please verify GEMINI_API_KEY environment variable.
+
+--- Exception for session 521139c9-8b83-4ed8-a133-bf2c9116fb65 ---
+Traceback (most recent call last):
+  File "C:\Users\bhano\OneDrive\Desktop\MemoryOS\backend\app\api\endpoints.py", line 353, in post_interview_message
+    turn = await interview_agent.conduct_turn(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "C:\Users\bhano\OneDrive\Desktop\MemoryOS\backend\app\agents\interview_agent.py", line 74, in conduct_turn
+    turn_result: InterviewTurnSchema = await llm_service.execute_structured_prompt(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\Users\bhano\OneDrive\Desktop\MemoryOS\backend\app\services\llm\llm_service.py", line 126, in execute_structured_prompt
+    raise last_error or JSONParsingError("Structured LLM output validation failed.")
+  File "C:\Users\bhano\OneDrive\Desktop\MemoryOS\backend\app\services\llm\llm_service.py", line 96, in execute_structured_prompt
+    raw_response = await self.execute_prompt(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\Users\bhano\OneDrive\Desktop\MemoryOS\backend\app\services\llm\llm_service.py", line 71, in execute_prompt
+    raise last_error or Exception("LLM prompt execution failed.")
+  File "C:\Users\bhano\OneDrive\Desktop\MemoryOS\backend\app\services\llm\llm_service.py", line 51, in execute_prompt
+    result = await self.provider.execute_messages_async(messages, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhano\OneDrive\Desktop\MemoryOS\backend\app\services\llm\gemini_provider.py", line 40, in execute_messages_async
+    raise ValueError("Gemini client is not initialized. Please verify GEMINI_API_KEY environment variable.")
+ValueError: Gemini client is not initialized. Please verify GEMINI_API_KEY environment variable.
